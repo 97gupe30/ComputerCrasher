@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="javascript/script.js"></script>
+        <script src="javascript/jquery.js"></script>
         <link href="css/main.css" rel="stylesheet" type="text/css">
     </head>
-    <body onload="start" onmousedown="mouseHandler()">
-        <canvas id="game" height="720" width="1280"></canvas>
+    <body onload="start()" onmousedown="mouseHandler()">
+        <div id="wrapper">
+            <canvas id="game" height="720" width="1280"></canvas>
+            
+            <div id="health"></div>
+            <img src="images/computer.jpg" id="computer">
+            <img src="images/computerCrashed.jpg" id="computerCrashed">
+            
+            <div id="store">
+                <div id="money"></div>
+                <div id="dps"></div>
+                <div id="clickcost"></div>
+                <div id="dpscost1"></div>
+                
+                <div id="clicklevel"></div>
+                <div class="box" id="box1"></div>
+                <div class="box" id="box2"></div>
+                <div class="box" id="box3"></div>
+                <div class="box" id="box4"></div>
+            </div>
+        </div>
     </body>
 </html>

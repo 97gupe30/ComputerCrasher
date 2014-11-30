@@ -3,8 +3,114 @@
     margin: 0;
 }
 
+@font-face {
+    font-family: text;
+    src: url(../fonts/GeosansLight.ttf);
+}
+
+body {
+    background-color: #222222;
+}
+
+#wrapper {
+    position: relative;
+    display: table;
+    margin: 0 auto 0 auto;
+}
+
 canvas {
     border: 1px solid black;
     display: table;
+    background-color: white;
+}
+
+#health, #money {
+    display: table;
     margin: 0 auto 0 auto;
+}
+
+#computer, #computerCrashed {
+    display: none;
+}
+
+#store {
+    background-image: url(../images/shop.jpg);
+    width: 640px;
+    height: 720px;
+    position: absolute;
+    top: 1px;
+}
+
+.box {
+    margin-top: 3px;
+    position: relative;
+    top: 85px;
+    width: 639px;
+    height: 132px;
+}
+
+#box1 {
+    height: 178px;
+}
+
+.box:hover {
+    cursor: pointer;
+}
+
+#box2 {
+    height: 126px;
+}
+
+#box4 {
+    height: 135px;
+}
+
+#money {
+    position: absolute;
+    color: white;
+    top: 6px;
+    left: 385px;
+    z-index: 1;
+    font-size: 30px;
+    font-family: text;
+}
+
+#dps {
+    color: white;
+    font-size: 40px;
+    font-family: text;
+    float: left;
+    position: relative;
+    top: 43px;
+    left: 78px;
+}
+
+#clickcost {
+    color: white;
+    font-size: 38px;
+    font-family: text;
+    float: left;
+    position: absolute;
+    top: 225px;
+    left: 100px;
+}
+
+#dpscost1 {
+    color: white;
+    font-size: 38px;
+    font-family: text;
+    float: left;
+    position: absolute;
+    top: 360px;
+    left: 100px;
+}
+
+#clicklevel {
+    color: white;
+    font-size: 38px;
+    font-family: text;
+    float: left;
+    position: absolute;
+    top: 223px;
+    left: 575px;
 }
