@@ -5,4 +5,12 @@ $(document).ready(function() {
     $('#box2').click(function() {
         dpsUpgrade1();
     });
+    
+    $('#box3').click(function() {
+        dpsUpgrade2();
+    });
+    
+    $('#box4').click(function() {
+        moneyUpgrade();
+    });
 });

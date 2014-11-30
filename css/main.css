@@ -75,6 +75,7 @@ canvas {
     font-family: text;
 }
 
+
 #dps {
     color: white;
     font-size: 40px;
@@ -85,32 +86,53 @@ canvas {
     left: 78px;
 }
 
-#clickcost {
+.cost {
     color: white;
     font-size: 38px;
     font-family: text;
     float: left;
     position: absolute;
-    top: 225px;
     left: 100px;
+}
+
+#clickcost {
+    top: 225px;
+
 }
 
 #dpscost1 {
+    top: 360px;
+}
+
+#dpscost2 {
+    top: 495px;
+}
+
+#moneycost {
+    top: 622px;
+}
+
+.level {
     color: white;
     font-size: 38px;
     font-family: text;
     float: left;
     position: absolute;
-    top: 360px;
-    left: 100px;
+    left: 575px;
 }
 
 #clicklevel {
-    color: white;
-    font-size: 38px;
-    font-family: text;
-    float: left;
-    position: absolute;
     top: 223px;
-    left: 575px;
+}
+
+#dps1level {
+    top: 358px;
+}
+
+#dps2level {
+    top: 493px;
+}
+
+#moneylevel {
+    top: 633px;
 }
