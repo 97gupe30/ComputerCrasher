@@ -156,3 +156,9 @@ canvas {
     left: 895px;
     color: black;
 }
+
+#stageLevel {
+    top: 10px;
+    left: 900px;
+    color: black;
+}
