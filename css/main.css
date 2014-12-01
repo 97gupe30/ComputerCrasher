@@ -1,6 +1,12 @@
 * {
     padding: 0;
     margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 @font-face {
@@ -29,7 +35,7 @@ canvas {
     margin: 0 auto 0 auto;
 }
 
-#computer, #computerCrashed {
+#computer, #computerCrashed, #rare, #rareCrashed {
     display: none;
 }
 
@@ -135,4 +141,18 @@ canvas {
 
 #moneylevel {
     top: 633px;
+}
+
+#damage {
+    color: black;
+    left: 930px;
+    top: 170px;
+}
+
+#health {
+    position: absolute;
+    float left;
+    top: 530px;
+    left: 895px;
+    color: black;
 }

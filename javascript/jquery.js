@@ -13,4 +13,7 @@ $(document).ready(function() {
     $('#box4').click(function() {
         moneyUpgrade();
     });
+$( document ).click(function() {
+  $('p').effect( "shake" );
+});
 });
