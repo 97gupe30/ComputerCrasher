@@ -162,3 +162,13 @@ canvas {
     left: 900px;
     color: black;
 }
+
+#reset {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    width: 50px;
+    height: 20px;
+    float: left;
+    background-color: red;
+}

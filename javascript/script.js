@@ -1,15 +1,38 @@
+if(localStorage.getItem("stageLevel") === null) {
+    localStorage.setItem("stageLevel", 1);
+    localStorage.setItem("monsterHealth", 10);
+    localStorage.setItem("healthChanger", 10);
+}
+
 // Basik varibler
 var game,
-    ctx;
-
+    ctx,
+    temp = 1;
 // Spel variabler
-var monsterHealth = 10, healthChanger = 10,
+var monsterHealth = localStorage.getItem("monsterHealth"), healthChanger = localStorage.getItem("healthChanger"),
     dmg = [1, 0], // Index 0 = DPC, Index 1 = DPS.
     money = [0, 10, 1], // Index 0 = Money balance, Index 1 = antal pengar per level, Index 2 = Pengar per klick.
     cost = [80, 25, 35, 15], // index 0 = clickDMG, Index 1 = dpsUpgrade1, Index 2 = dpsUpgrade2,  Index 3 = moneyUpgrade.
     level = [0, 0, 0, 0], // Index 0 = clickLevel, Index 1 = DPSLevel, Index 2 = DPS2Level.
-    stageLevel = 1,
-    rare = 0;
+    stageLevel = localStorage.getItem("stageLevel");
+rare = 0;
+
+if(localStorage.getItem("dmg") === null) {
+    localStorage.setItem("dmg", JSON.stringify(dmg));
+    localStorage.setItem("money", JSON.stringify(money));
+    localStorage.setItem("cost", JSON.stringify(cost));
+    localStorage.setItem("level", JSON.stringify(level));
+}
+
+temp = localStorage.getItem("dmg");
+dmg = JSON.parse(temp);
+temp = localStorage.getItem("money");
+money = JSON.parse(temp);
+temp = localStorage.getItem("cost");
+cost = JSON.parse(temp);
+temp = localStorage.getItem("level");
+level = JSON.parse(temp);
+
 // Bild variabler
 var computerImg;
 
@@ -17,22 +40,11 @@ function start() {
     game = document.getElementById('game');
     ctx = game.getContext('2d');
 
+
     computerImg = document.getElementById('computer');
 
     window.setInterval(update, 25);
     window.setInterval(dps, 100);
-
-    document.getElementById('store').style.backgroundImage = "url('images/shopclosed.jpg')";
-    document.getElementById('clickcost').style.opacity = '0.18';
-    document.getElementById('dpscost1').style.opacity = '0.18';
-    document.getElementById('dpscost2').style.opacity = '0.18';
-    document.getElementById('moneycost').style.opacity = '0.18';
-    document.getElementById('clicklevel').style.opacity = '0.18';
-    document.getElementById('dps1level').style.opacity = '0.18';
-    document.getElementById('dps2level').style.opacity = '0.18';
-    document.getElementById('moneylevel').style.opacity = '0.18';
-    document.getElementById('money').style.opacity = '0.18';
-    document.getElementById('dps').style.opacity = '0.18';
 }
 
 function paintComputer() {
@@ -45,6 +57,18 @@ function timer() {
 
 function exit() {
     document.getElementById('damage').innerHTML = " ";
+}
+
+function reset() {
+    var startover = confirm("Are you sure you want to start over?");
+    if(startover) {
+        monsterHealth = 10, healthChanger = 10,
+        dmg = [1, 0]; // Index 0 = DPC, Index 1 = DPS.
+        money = [0, 10, 1]; // Index 0 = Money balance, Index 1 = antal pengar per level, Index 2 = Pengar per klick.
+        cost = [80, 25, 35, 15]; // index 0 = clickDMG, Index 1 = dpsUpgrade1, Index 2 = dpsUpgrade2,  Index 3 = moneyUpgrade.
+        level = [0, 0, 0, 0]; // Index 0 = clickLevel, Index 1 = DPSLevel, Index 2 = DPS2Level.
+        stageLevel = 1;
+    }
 }
 
 
@@ -126,21 +150,8 @@ function mouseHandler() {
             computerImg = document.getElementById('computerCrashed');
             setTimeout(function(){timer()}, 1300);
         }
-        
+
         stageLevel++;
-        if(stageLevel >= 5) {
-            document.getElementById('clickcost').style.opacity = '1';
-            document.getElementById('dpscost1').style.opacity = '1';
-            document.getElementById('dpscost2').style.opacity = '1';
-            document.getElementById('moneycost').style.opacity = '1';
-            document.getElementById('clicklevel').style.opacity = '1';
-            document.getElementById('dps1level').style.opacity = '1';
-            document.getElementById('dps2level').style.opacity = '1';
-            document.getElementById('moneylevel').style.opacity = '1';
-            document.getElementById('money').style.opacity = '1';
-            document.getElementById('dps').style.opacity = '1';
-            document.getElementById('store').style.backgroundImage = "url('images/shop.jpg')";
-        }
     }
 
     if(monsterHealth <= 0 && rare === 1) { // RARE DÖD
@@ -162,6 +173,43 @@ function mouseHandler() {
 function update() {
     ctx.clearRect(0, 0, game.width, game.height);
     paintComputer();
+
+    // Öppen eller stängd butik
+    if(stageLevel >= 5) {
+        document.getElementById('clickcost').style.opacity = '1';
+        document.getElementById('dpscost1').style.opacity = '1';
+        document.getElementById('dpscost2').style.opacity = '1';
+        document.getElementById('moneycost').style.opacity = '1';
+        document.getElementById('clicklevel').style.opacity = '1';
+        document.getElementById('dps1level').style.opacity = '1';
+        document.getElementById('dps2level').style.opacity = '1';
+        document.getElementById('moneylevel').style.opacity = '1';
+        document.getElementById('money').style.opacity = '1';
+        document.getElementById('dps').style.opacity = '1';
+        document.getElementById('store').style.backgroundImage = "url('images/shop.jpg')";
+    } else {
+        document.getElementById('store').style.backgroundImage = "url('images/shopclosed.jpg')";
+        document.getElementById('clickcost').style.opacity = '0.18';
+        document.getElementById('dpscost1').style.opacity = '0.18';
+        document.getElementById('dpscost2').style.opacity = '0.18';
+        document.getElementById('moneycost').style.opacity = '0.18';
+        document.getElementById('clicklevel').style.opacity = '0.18';
+        document.getElementById('dps1level').style.opacity = '0.18';
+        document.getElementById('dps2level').style.opacity = '0.18';
+        document.getElementById('moneylevel').style.opacity = '0.18';
+        document.getElementById('money').style.opacity = '0.18';
+        document.getElementById('dps').style.opacity = '0.18';
+    }
+
+    // SPARA
+
+    localStorage.setItem("stageLevel", stageLevel);
+    localStorage.setItem("monsterHealth", monsterHealth);
+    localStorage.setItem("healthChanger", healthChanger);
+    localStorage.setItem("dmg", JSON.stringify(dmg));
+    localStorage.setItem("money", JSON.stringify(money));
+    localStorage.setItem("cost", JSON.stringify(cost));
+    localStorage.setItem("level", JSON.stringify(level));
 
     // Information (DPS, DPC m.m)
     document.getElementById('dps').innerHTML = dmg[1]; // DPS
