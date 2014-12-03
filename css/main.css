@@ -35,7 +35,7 @@ canvas {
     margin: 0 auto 0 auto;
 }
 
-#computer, #computerCrashed, #rare, #rareCrashed {
+.computer{
     display: none;
 }
 

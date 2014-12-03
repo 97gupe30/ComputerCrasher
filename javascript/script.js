@@ -7,7 +7,9 @@ if(localStorage.getItem("stageLevel") === null) {
 // Basik varibler
 var game,
     ctx,
-    temp = 1;
+    temp = 1,
+    picture,
+    pictureCrashed;
 // Spel variabler
 var monsterHealth = localStorage.getItem("monsterHealth"), healthChanger = localStorage.getItem("healthChanger"),
     dmg = [1, 0], // Index 0 = DPC, Index 1 = DPS.
@@ -41,7 +43,7 @@ function start() {
     ctx = game.getContext('2d');
 
 
-    computerImg = document.getElementById('computer');
+    computerImg = document.getElementById('computerlvl1');
 
     window.setInterval(update, 25);
     window.setInterval(dps, 100);
@@ -52,7 +54,7 @@ function paintComputer() {
 }
 
 function timer() {
-    computerImg = document.getElementById('computer');
+    computerImg = picture;
 }
 
 function exit() {
@@ -147,7 +149,7 @@ function mouseHandler() {
             monsterHealth = healthChanger*3;
             healthChanger = monsterHealth;
 
-            computerImg = document.getElementById('computerCrashed');
+            computerImg = document.getElementById(pictureCrashed);
             setTimeout(function(){timer()}, 1300);
         }
 
@@ -173,7 +175,17 @@ function mouseHandler() {
 function update() {
     ctx.clearRect(0, 0, game.width, game.height);
     paintComputer();
+    
+    // Ändrar bilder (datorn).
+    if(stageLevel < 5) {
+        picture = document.getElementById('computerlvl1');
+        pictureCrashed = document.getElementById('computerlvl1Crashed');
+    } else if(stageLevel < 10) {
+        picture = document.getElementById('computer');
+        pictureCrashed = document.getElementById('computerCrashed');
+    }
 
+    
     // Öppen eller stängd butik
     if(stageLevel >= 5) {
         document.getElementById('clickcost').style.opacity = '1';
